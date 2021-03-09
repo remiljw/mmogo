@@ -1,1 +1,0 @@
-# Mmogo Assessment
