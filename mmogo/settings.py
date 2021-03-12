@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,9 @@ SECRET_KEY = '%tvl1k=95giz3zw(hxxn1kl%^uvxn)3dtnhrv1@vo@1+_8_3)7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -38,13 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'companies',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
+    'djoser',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -126,3 +133,36 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'companies.User'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "remiljw@gmail.com"
+EMAIL_HOST_PASSWORD = "ikdulckwsnzmgcsk"
+EMAIL_USE_TLS = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES' :[
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
+
+DJOSER = {
+    "LOGIN_FIELD": "email",
+    "PASSWORD_CHANGED_EMAIL_CONFIRMATION": False,
+    "SEND_CONFIRMATION_EMAIL": False,
+    "PASSWORD_RESET_CONFIRM_URL": "api/password/reset/confirm/{uid}/{token}",
+    "ACTIVATION_URL": "api/user/activate/{uid}/{token}",
+    "SEND_ACTIVATION_EMAIL": True,
+    "SERIALIZERS": {
+        "user_create": "companies.serializers.UserCreateSerializer",
+        "user": "companies.serializers.UserCreateSerializer",
+        # 'current_user': 'accounts.serializers.UserCreateSerializer',
+        "user_delete": "djoser.serializers.UserDeleteSerializer",
+    },
+}
