@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from datetime import timedelta
 import dj_database_url
+from dotenv import load_dotenv
+from pathlib import Path
 
+load_dotenv()
+load_dotenv(verbose=True)
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -86,16 +92,16 @@ WSGI_APPLICATION = 'mmogo.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'assessment',
-        'USER': 'chess',
-        'PASSWORD': 'pass.p455',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT')
     },
 }
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'] = db_from_env
+DATABASES['default'].update(db_from_env)
 
 
 
