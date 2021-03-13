@@ -8,31 +8,6 @@ from .models import Company, FavoriteList, User
 from .serializers import CompanySerializer, FavoriteSerializer
 from django.shortcuts import get_object_or_404
 
-
-class UserActivationView(APIView):
-    permission_classes = (AllowAny,)
-    def get (self, request, uid, token):
-        protocol = 'https://' if request.is_secure() else 'http://'
-        web_url = protocol + request.get_host()
-        post_url = web_url + "/auth/users/activation/"
-        post_data = {'uid': uid, 'token': token}
-        result = requests.post(post_url, data = post_data)
-        content = result.json()
-        return Response(content)
-
-class ResetPasswordView(APIView):
-    permission_classes = (AllowAny,)
-    def get (self, request, uid, token):
-        protocol = 'https://' if request.is_secure() else 'http://'
-        web_url = protocol + request.get_host()
-        new_password = request.data.get('new_password')
-        post_url = web_url + "/auth/users/reset_password_confirm/"
-        post_data = {'uid': uid, 'token': token, 'new_password': new_password }
-        result = requests.post(post_url, data = post_data)
-        content = result.json()
-        return Response(content)
-    
-
 class CompanyView(generics.ListAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Company.objects.all()
