@@ -164,8 +164,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
-DOMAIN = 'localhost:3000'
-SITE_NAME = 'Mmogo Assessment'
+DOMAIN = os.getenv('DOMAIN')
+SITE_NAME = os.getenv('SITE_NAME')
 
 DJOSER = {
     "LOGIN_FIELD": "username",
