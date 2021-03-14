@@ -12,6 +12,6 @@
 - In your `.env` file set your DOMAIN to be the running port of the react server. i.e `localhost:3000`, set the SITE_NAME to any of your choice. 
 - run `python manage.py migrate`
 - run `python manage.py loaddata data.json` to populate the database
-- run `python manae.py runserver`
+- run `python manage.py runserver`
 - Hurray! you have the back end set up.
 - Visit https://github.com/remiljw/mmogo-frontend to set up the front end.
