@@ -8,6 +8,6 @@
 - Clone this repo on your machine 
 - cd into 'mmogo' and create a virtualenv and activate it
 - run `pip install -r requirements.txt`
-- run `python mange.py runserver`
+- run `python manae.py runserver`
 - Hurray! you have the back end set up.
 - Visit https://github.com/remiljw/mmogo-frontend to set up the front end.
