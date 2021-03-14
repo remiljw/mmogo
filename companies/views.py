@@ -28,10 +28,16 @@ class FavoriteDetailView(APIView):
     permission_classes = (IsAuthenticated,)
     def post(self, request, id, format=None):
         com =  get_object_or_404(Company, id=id)
-        company = FavoriteList.objects.create(owner=request.user, company_id=id)
-        response = {
-            'message' : '{} is added to favorites'.format(company.company)
+        if FavoriteList.objects.filter(owner=request.user, company_id=id).exists():
+            # company = FavoriteList.objects.get(company_id=id)
+            response = {
+            'message' : '{} is already in favorites'.format(com.name)
         }
+        else:
+            company = FavoriteList.objects.create(owner=request.user, company_id=id)
+            response = {
+                'message' : '{} is added to favorites'.format(company.company)
+            }
         return Response(response, status=status.HTTP_201_CREATED)
 
     def delete(self, request, id, format=None):
