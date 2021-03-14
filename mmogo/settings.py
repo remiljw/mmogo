@@ -168,7 +168,7 @@ DOMAIN = 'localhost:3000'
 SITE_NAME = 'Mmogo Assessment'
 
 DJOSER = {
-    "LOGIN_FIELD": "email",
+    "LOGIN_FIELD": "username",
     "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
     "SEND_CONFIRMATION_EMAIL": False,
     "PASSWORD_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
