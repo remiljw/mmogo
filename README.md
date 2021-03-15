@@ -46,7 +46,7 @@ Below are the list of endpoints and what each endpoint does
 ```json
     {
         "uid": "MjU",
-        "token": "ajjzio-37af2b8fa556999dd3ff38fc420eab2e",
+        "token": "ajjzio-37af2b8fa556999dd3ff38fc420eab2e"
      }
 ```
 
