@@ -43,7 +43,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://mmogo-webapp.netlify.app",
 ]
 
-
+APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
