@@ -46,7 +46,7 @@ Below are the list of endpoints and what each endpoint does
 ```json
     {
         "uid": "MjU",
-        "token": "ajjzio-37af2b8fa556999dd3ff38fc420eab2e",
+        "token": "ajjzio-37af2b8fa556999dd3ff38fc420eab2e"
      }
 ```
 
@@ -120,9 +120,9 @@ Below are the list of endpoints and what each endpoint does
    ]
 ```
 ### Add Favorite 
-- https://mmogo-assessment.herokuapp.com/api/fav/<:id>
+- https://mmogo-assessment.herokuapp.com/api/fav/{id}/
 -  - remember to add Authentication to headers.
-- - send a POST request to add a company as favorite
+- - send a POST request to add a company as favorite, where `{id}` is the company's id.
 
 ### List Favorites 
 - https://mmogo-assessment.herokuapp.com/api/favorites/
@@ -137,12 +137,13 @@ Below are the list of endpoints and what each endpoint does
             "name": "GitLab" ,
             "address": "World Wide Web",
             "phone_no": "+14483449034"
-        },
+        }
     }
    ]
 ```
 
 ### Delete Favorite 
-- https://mmogo-assessment.herokuapp.com/api/fav/<:id>
+- https://mmogo-assessment.herokuapp.com/api/fav/{id}/
 - - remember to add Authentication to headers.
-- - send a DELETE request to delete a company from favorites
+- - send a DELETE request to delete a company from favorites, where `{id}` is the list's id.
+
