@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'rest_framework.authtoken',
+    'request_viewer',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'request_viewer.middleware.RequestViewerMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
