@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/', include('companies.urls')),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.authtoken")),
-    path('logs/', include('request_viewer.urls')),
+    # path('logs/', include('request_viewer.urls')),
 ]
